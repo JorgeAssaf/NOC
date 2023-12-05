@@ -1,0 +1,28 @@
+{
+  "name": "network-operations-center",
+  "version": "1.0.0",
+  "description": "Aplication to monitor network operations",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsnd --respawn --clear src/app.ts",
+    "build": "rimraf ./dist && tsc",
+    "start": "npm run build && node dist/app.js"
+  },
+  "keywords": [
+    "node",
+    "typescript",
+    "express",
+    "monitoring"
+  ],
+  "author": "Jorge Assaf",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.10.3",
+    "rimraf": "^5.0.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "cron": "^3.1.6"
+  }
+}
