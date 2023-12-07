@@ -1,6 +1,5 @@
 import nodemailer from 'nodemailer'
-import { envs } from '../../config/plugins/envs.plugin'
-
+import { envs } from '@/config/plugins/envs.plugin'
 
 interface SendEmailOptions {
   to: string | string[]

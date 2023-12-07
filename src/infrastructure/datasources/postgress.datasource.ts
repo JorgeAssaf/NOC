@@ -1,16 +1,14 @@
 import { PrismaClient } from '@prisma/client'
-import { LogDatasource } from '../../domain/datasources/log.datasource'
-import { LogEntity, LogSeverityLevel } from '../../domain/entities/log.entity'
-
+import { LogDatasource } from '@/domain/datasources/log.datasource'
+import { LogEntity, LogSeverityLevel } from '@/domain/entities/log.entity'
 
 const prisma = new PrismaClient()
 
 export class PostgresLogDatasource implements LogDatasource {
-
   async saveLog(log: LogEntity): Promise<void> {
     await prisma.logs.create({
       data: {
-        ...log
+        ...log,
       },
     })
   }
