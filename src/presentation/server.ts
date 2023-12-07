@@ -31,12 +31,14 @@ export class Server {
     // const emailService = new EmailService(fileSystemLogRepository)
     // emailService.sendEmailWithLogs('Jorgeassaf799@gmail.com')
 
-    // CronService.createJob('*/10 * * * * *', () => {
+    // CronService.createJob('0 0 * * * *', () => {
+
     //   new CheckServiceMultiple(
-    //     [fileSystemLogRepository, mongoLogRepository, postgresLogRepository],
+    //     [fsLogRepository, mongoLogRepository, postgresLogRepository],
     //     () => console.log('success'),
     //     (error) => console.log(error),
     //   ).execute('https://www.google.com')
+
     // })
   }
 }

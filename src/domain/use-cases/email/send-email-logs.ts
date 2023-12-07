@@ -1,18 +1,16 @@
-import { EmailService } from "../../../presentation/email/email.service"
-import { LogEntity, LogSeverityLevel } from "../../entities/log.entity"
-import { LogRepository } from "../../repository/log.repository"
+import { EmailService } from '../../../presentation/email/email.service'
+import { LogEntity, LogSeverityLevel } from '../../entities/log.entity'
+import { LogRepository } from '../../repository/log.repository'
 
 interface SendLogEmailUseCase {
   execute: (to: string | string[]) => Promise<boolean>
 }
 
 export class SendLogEmail implements SendLogEmailUseCase {
-
   constructor(
     private readonly logRepository: LogRepository,
     private readonly emailService: EmailService,
   ) { }
-
 
   async execute(to: string | string[]) {
     try {
@@ -28,10 +26,7 @@ export class SendLogEmail implements SendLogEmailUseCase {
       })
       this.logRepository.saveLog(log)
       return true
-    } catch (error) {
-
-    }
+    } catch (error) { }
     return true
   }
-
 }
