@@ -1,10 +1,9 @@
-import { FileSystemDatasource } from '@/infrastructure/datasources/file-system.datasource'
-import { PostgresLogDatasource } from '@/infrastructure/datasources/postgress.datasource'
-import { LogRepositoryImpl } from '@/infrastructure/repository/log.repository.impl'
-import { EmailService } from '@/presentation/email/email.service'
-import { CronService } from '@/presentation/cron/cron-service'
-import { CheckServiceMultiple } from '@/domain/use-cases/checks/check-service-multiple'
-import { MongoDatasource } from '@/infrastructure/datasources/mongo.datasource'
+
+import { FileSystemDatasource } from "../infrastructure/datasources/file-system.datasource"
+import { MongoDatasource } from "../infrastructure/datasources/mongo.datasource"
+import { PostgresLogDatasource } from "../infrastructure/datasources/postgress.datasource"
+import { LogRepositoryImpl } from "../infrastructure/repository/log.repository.impl"
+import { EmailService } from "./email/email.service"
 
 const fsLogRepository = new LogRepositoryImpl(new FileSystemDatasource())
 
