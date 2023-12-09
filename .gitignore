@@ -13,6 +13,7 @@ dist/
 
 # MongoDB data directory
 /mongo
-
+/mongo-test
 # PostgreSQL data directory
-postgres
+/postgres
+/postgres-test
