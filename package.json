@@ -4,12 +4,13 @@
   "description": "Aplication to monitor network operations",
   "main": "index.js",
   "scripts": {
-    "test": "vitest",
-    "test:watch": "vitest --watch",
-    "coverage": "vitest run --coverage",
     "dev": "tsnd --respawn --clear src/app.ts",
     "build": "rimraf ./dist && tsc",
-    "start": "npm run build && node dist/app.js"
+    "start": "npm run build && node dist/app.js",
+    "docker:test": "docker compose -f docker-compose.test.yml --env-file .env.test up -d",
+    "test": "pnpm run docker:test && vitest",
+    "test:watch": "pnpm run docker:test && vitest --watch",
+    "test:coverage": "pnpm run docker:test && vitest run --coverage"
   },
   "keywords": [
     "node",
