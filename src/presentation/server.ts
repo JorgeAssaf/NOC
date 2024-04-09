@@ -1,9 +1,12 @@
 
+import { CheckServiceMultiple } from "../domain/use-cases/checks/check-service-multiple"
+import { SendLogEmail } from "../domain/use-cases/email/send-email-logs"
 import { FileSystemDatasource } from "../infrastructure/datasources/file-system.datasource"
 import { MongoDatasource } from "../infrastructure/datasources/mongo.datasource"
 import { PostgresLogDatasource } from "../infrastructure/datasources/postgress.datasource"
 import { LogRepositoryImpl } from "../infrastructure/repository/log.repository.impl"
 import { EmailService } from "./email/email.service"
+import { CronService } from "./cron/cron-service"
 
 const fsLogRepository = new LogRepositoryImpl(new FileSystemDatasource())
 
@@ -11,22 +14,15 @@ const postgresLogRepository = new LogRepositoryImpl(new PostgresLogDatasource())
 
 const mongoLogRepository = new LogRepositoryImpl(new MongoDatasource())
 
-const emailService = new EmailService()
+const email = new EmailService()
 export class Server {
   public static async start() {
     console.log('Server is running')
 
-    // const createLog = await prisma.logs.create({
-    //   data: {
-    //     message: 'test',
-    //     level: LevelSeverity.low,
-    //     origin: 'App.ts',
-    //   },
-    // })
-    //TODO seend email
-    // const sendEmailLogs = new SendLogEmail(fileSystemLogRepository, emailService)
+
+    // const sendEmailLogs = new SendLogEmail(fsLogRepository, email)
     // sendEmailLogs.execute(['jorgeassaf799@gmail.com'])
-    // const emailService = new EmailService(fileSystemLogRepository)
+    // const emailService = new EmailService()
     // emailService.sendEmailWithLogs('Jorgeassaf799@gmail.com')
 
     // CronService.createJob('0 0 * * * *', () => {

@@ -11,4 +11,4 @@ async function main() {
   Server.start()
 }
 
-main()
+void main()
