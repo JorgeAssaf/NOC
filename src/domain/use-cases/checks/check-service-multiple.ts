@@ -1,5 +1,5 @@
-import { LogEntity, LogSeverityLevel } from '@/domain/entities/log.entity'
-import { LogRepository } from '@/domain/repository/log.repository'
+import { LogEntity, LogSeverityLevel } from "../../entities/log.entity"
+import type { LogRepository } from "../../repository/log.repository"
 
 interface CheckServiceMultipleUseCase {
   execute: (url: string) => Promise<boolean>
@@ -19,6 +19,11 @@ export class CheckServiceMultiple implements CheckServiceMultipleUseCase {
       logRepository.saveLog(log)
     })
   }
+  private getLogs(severity: LogSeverityLevel) {
+    return this.logRepository.forEach((logRepository) => logRepository.getLogs(severity))
+
+  }
+
   public async execute(url: string): Promise<boolean> {
     try {
       const response = await fetch(url)
@@ -40,6 +45,8 @@ export class CheckServiceMultiple implements CheckServiceMultipleUseCase {
         origin: 'CheckService',
       })
       this.allLogs(log)
+
+      this.getLogs(LogSeverityLevel.high)
       this.errorCallback && this.errorCallback(`${url} is not ok ${error}`)
       return false
     }
